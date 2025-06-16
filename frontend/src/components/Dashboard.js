@@ -215,7 +215,10 @@ const Dashboard = ({ onAddItemClick, onBulkOperationsClick }) => {
             <div className="mt-6 bg-white rounded-xl shadow-lg p-6">
               <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
               <div className="grid grid-cols-2 gap-4">
-                <button className="p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-colors">
+                <button 
+                  onClick={handleViewAnalytics}
+                  className="p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-colors"
+                >
                   <div className="text-center">
                     <span className="text-2xl">📊</span>
                     <p className="text-sm font-medium text-gray-600 mt-2">View Analytics</p>
