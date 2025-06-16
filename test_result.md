@@ -116,6 +116,9 @@ backend:
         - working: true
           agent: "main"
           comment: "DELETE /api/items/{item_id} endpoint exists and is properly implemented with error handling"
+        - working: true
+          agent: "testing"
+          comment: "Tested DELETE /api/items/{item_id} endpoint successfully. Created a test item, verified it was created, deleted it using the endpoint, confirmed it was deleted (404 response), and verified error handling for non-existent items. All tests passed successfully."
 
 frontend:
   - task: "Quick Actions Button Functionality"
