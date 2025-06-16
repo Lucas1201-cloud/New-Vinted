@@ -6,7 +6,7 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const AddItemForm = ({ isOpen, onClose, onItemAdded, editingItem = null }) => {
-  const [formData, setFormData] = useState({
+  const getInitialFormData = () => ({
     title: editingItem?.title || '',
     description: editingItem?.description || '',
     category: editingItem?.category || '',
@@ -34,7 +34,13 @@ const AddItemForm = ({ isOpen, onClose, onItemAdded, editingItem = null }) => {
     tags: editingItem?.tags ? editingItem.tags.join(', ') : ''
   });
 
+  const [formData, setFormData] = useState(getInitialFormData);
   const [loading, setLoading] = useState(false);
+
+  // Update form data when editingItem changes
+  useEffect(() => {
+    setFormData(getInitialFormData());
+  }, [editingItem]);
 
   const handleInputChange = (e) => {
     const { name, value, type } = e.target;
