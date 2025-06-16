@@ -242,7 +242,10 @@ const Dashboard = ({ onAddItemClick, onBulkOperationsClick }) => {
                     <p className="text-sm font-medium text-gray-600 mt-2">Set ROI Target</p>
                   </div>
                 </button>
-                <button className="p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition-colors">
+                <button 
+                  onClick={handleExportCSV}
+                  className="p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition-colors"
+                >
                   <div className="text-center">
                     <span className="text-2xl">📤</span>
                     <p className="text-sm font-medium text-gray-600 mt-2">Export CSV</p>
