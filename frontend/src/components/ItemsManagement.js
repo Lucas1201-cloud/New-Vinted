@@ -168,7 +168,12 @@ const ItemsManagement = ({ onAddItemClick, onEditItemClick, onBulkOperationsClic
         >
           Edit
         </button>
-        <button className="text-red-600 hover:text-red-900">Delete</button>
+        <button 
+          onClick={() => handleDeleteItem(item.id)}
+          className="text-red-600 hover:text-red-900"
+        >
+          Delete
+        </button>
       </td>
     </tr>
   );
