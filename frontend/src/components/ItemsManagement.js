@@ -84,6 +84,19 @@ const ItemsManagement = ({ onAddItemClick, onEditItemClick, onBulkOperationsClic
     return ((profit / item.purchase_price) * 100).toFixed(1);
   };
 
+  const handleDeleteItem = async (itemId) => {
+    if (window.confirm('Are you sure you want to delete this item? This action cannot be undone.')) {
+      try {
+        await axios.delete(`${API}/items/${itemId}`);
+        // Refresh the items list
+        fetchItems();
+      } catch (error) {
+        console.error('Error deleting item:', error);
+        alert('Failed to delete item. Please try again.');
+      }
+    }
+  };
+
   const ItemRow = ({ item, isSelected, onSelect }) => (
     <tr className={`hover:bg-gray-50 ${isSelected ? 'bg-blue-50' : ''}`}>
       <td className="px-6 py-4 whitespace-nowrap">
