@@ -150,11 +150,11 @@ frontend:
 
   - task: "Edit Item Form Data Persistence"
     implemented: true
-    working: "NA"
+    working: true
     file: "frontend/src/components/AddItemForm.js"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: false
           agent: "user"
@@ -162,6 +162,9 @@ frontend:
         - working: "NA"
           agent: "main"
           comment: "Fixed form initialization issue by creating getInitialFormData() function and using useEffect to update form data when editingItem prop changes. Added useEffect import and proper state management for edit mode"
+        - working: true
+          agent: "testing"
+          comment: "Root cause identified and fixed: Frontend was sending empty string numeric fields (like sold_price='') instead of null values, causing HTTP 422 validation errors from backend. Fixed by adding proper data formatting in handleSubmit function to convert empty strings to null and ensure numeric fields are properly parsed as numbers/integers before API submission."
 
   - task: "Delete Item Functionality"
     implemented: true
