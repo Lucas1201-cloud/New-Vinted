@@ -71,10 +71,17 @@ const AddItemForm = ({ isOpen, onClose, onItemAdded, editingItem = null }) => {
         tags: formData.tags.split(',').map(tag => tag.trim()).filter(tag => tag)
       };
 
+      // Debug: Log the data being sent
+      console.log('Submitting data:', submitData);
+      console.log('Edit mode:', !!editingItem);
+      console.log('Item ID:', editingItem?.id);
+
       if (editingItem) {
-        await axios.put(`${API}/items/${editingItem.id}`, submitData);
+        const response = await axios.put(`${API}/items/${editingItem.id}`, submitData);
+        console.log('PUT response:', response.data);
       } else {
-        await axios.post(`${API}/items`, submitData);
+        const response = await axios.post(`${API}/items`, submitData);
+        console.log('POST response:', response.data);
       }
 
       onItemAdded();
@@ -90,6 +97,8 @@ const AddItemForm = ({ isOpen, onClose, onItemAdded, editingItem = null }) => {
       });
     } catch (error) {
       console.error('Error saving item:', error);
+      console.error('Error response:', error.response?.data);
+      console.error('Error status:', error.response?.status);
       alert('Failed to save item. Please try again.');
     } finally {
       setLoading(false);
