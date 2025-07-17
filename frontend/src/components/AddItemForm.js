@@ -68,7 +68,18 @@ const AddItemForm = ({ isOpen, onClose, onItemAdded, editingItem = null }) => {
     try {
       const submitData = {
         ...formData,
-        tags: formData.tags.split(',').map(tag => tag.trim()).filter(tag => tag)
+        tags: formData.tags.split(',').map(tag => tag.trim()).filter(tag => tag),
+        // Convert empty string numeric fields to null or proper numbers
+        sold_price: formData.sold_price === '' ? null : parseFloat(formData.sold_price) || null,
+        purchase_price: parseFloat(formData.purchase_price) || 0,
+        listed_price: parseFloat(formData.listed_price) || 0,
+        shipping_cost: parseFloat(formData.shipping_cost) || 0,
+        vinted_fee: parseFloat(formData.vinted_fee) || 0,
+        buyer_protection_fee: parseFloat(formData.buyer_protection_fee) || 0,
+        views: parseInt(formData.views) || 0,
+        likes: parseInt(formData.likes) || 0,
+        watchers: parseInt(formData.watchers) || 0,
+        messages: parseInt(formData.messages) || 0
       };
 
       // Debug: Log the data being sent
