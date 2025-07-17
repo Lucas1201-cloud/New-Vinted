@@ -105,6 +105,18 @@
 user_problem_statement: "Fix three critical bugs in the Vinted Tracker: 1) Quick actions tabs don't respond when clicked, 2) When editing an item, previous data is not saved and has to be re-entered, 3) Delete item button does not delete the selected item"
 
 backend:
+  - task: "PUT Items Update API Endpoint"
+    implemented: true
+    working: true
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "Comprehensive testing of PUT /api/items/{item_id} endpoint completed successfully. Tested all data types including basic fields (title, description, category, brand, size, color, condition), pricing fields (purchase_price, listed_price, sold_price, shipping_cost, vinted_fee, buyer_protection_fee), performance fields (views, likes, watchers, messages), photo fields (photos array with base64 strings, main_photo), and status/tags fields. Also tested edge cases including empty values, null values, invalid data, non-existent items, and partial updates. All tests passed. Backend validation and update functionality is working correctly. Frontend 'Failed to save item' errors are not caused by backend issues."
+
   - task: "Delete Item API Endpoint"
     implemented: true
     working: true
